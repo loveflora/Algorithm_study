@@ -1,3 +1,6 @@
+//# 시간 초과 !
+// 다시 풀어보기
+
 function solution(numbers) {
   let answer = [];
   let compare = [];
