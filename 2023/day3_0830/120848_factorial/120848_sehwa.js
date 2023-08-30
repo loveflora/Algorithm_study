@@ -9,6 +9,13 @@ function solution(n) {
 
   return i - 1;
 
+  // function fac(num) {
+  //   if (num == 1) {
+  //       return num;
+  //   } else {
+  //       return num * fac(num - 1);
+  //   }
+
   // ----- 2번째 풀이 -----
   // const getFactorial = i => {
   //     let fact = 1;
