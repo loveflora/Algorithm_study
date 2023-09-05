@@ -14,3 +14,34 @@
 
 // 3
 // 16
+
+const array = require('fs')
+  .readFileSync('./9461.txt')
+  .toString()
+  .trim()
+  .split('\n');
+
+const input = require('fs').readFileSync('./9461.txt').toString().trim();
+// .split('\n');
+
+// 1, 1, 1, 2, 2, 3, 4, 5, 7, 9
+// 처음에만 1 1 1 2 이고 이후부터는
+// 2+1 = 3
+// 3+1 = 4
+// 4+1 = 5
+// 5+2 = 7
+// 7+2 = 9
+// 9+3 = 12
+
+// 4개 차이남
+
+let lines = [1, 1, 1, 2, 2];
+
+lines.push(input);
+
+for (let i = 0; i <= input - 5; i++) {
+  lines.push(lines[i] + lines[i + 4]);
+}
+
+console.log(lines);
+console.log(input);
