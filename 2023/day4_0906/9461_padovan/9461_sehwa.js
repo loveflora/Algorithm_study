@@ -25,19 +25,11 @@
 // 7+2 = 9
 // 9+3 = 12
 
-// 4개 차이남
-
 let [count, ...arr] = require('fs')
-  .readFileSync('./9461.txt')
+  .readFileSync('./dev/stdin')
   .toString()
   .trim()
   .split('\n');
-
-// arr = arr.map((item) => item.split(' ').map(Number));
-
-// console.log(count);
-// console.log(arr.join('\n'));
-// console.log(arr);
 
 for (loc of arr) {
   const dp = Array(Number(loc) + 1).fill(0);
@@ -49,3 +41,9 @@ for (loc of arr) {
   }
   console.log(dp[Number(loc)]);
 }
+
+// arr = arr.map((item) => item.split(' ').map(Number));
+
+// console.log(count);
+// console.log(arr.join('\n'));
+// console.log(arr);
