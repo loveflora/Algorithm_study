@@ -8,6 +8,25 @@
 // ▣ 출력설명
 // 남은 문자만 출력한다.
 
-// ▣ 입력예제 1 (A(BC)D)EF(G(H)(IJ)K)LM(N)
+// ▣ 입력예제 1
+// (A(BC)D)EF(G(H)(IJ)K)LM(N)
 
-// ▣ 출력예제 1 EFLM
+// ▣ 출력예제 1
+// EFLM
+
+function solution(s) {
+  let answer;
+
+  let stack = [];
+  for (let x of s) {
+    if (x === ")") {
+      // 1) 닫는 괄호라면
+      while (stack.pop() !== "("); // 여는 괄호 만나면, 멈춤 (여는 괄호 pop하고 멈춤)
+    } else stack.push(x); // 2) 닫는 괄호가 아니라면, stack에 축적
+  }
+  answer = stack.join("");
+  return answer;
+}
+
+let str = "(A(BC)D)EF(G(H)(IJ)K)LM(N)";
+console.log(solution(str));

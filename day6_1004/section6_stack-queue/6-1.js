@@ -12,3 +12,22 @@
 // ▣ 입력예제 1 (()(()))(()
 
 // ▣ 출력예제 1 NO
+
+function solution(s) {
+  let answer = "YES";
+  stack = [];
+
+  for (let x of s) {
+    if (x === "(") stack.push(x);
+    else {
+      if (stack.length === 0) return "NO"; //닫는 괄호가 많은 상황 (여는 괄호가 없음, 닫는 괄호의 짝이 없음)
+
+      stack.pop();
+    }
+  }
+  if (stack.length > 0) return "NO"; // 여는 괄호가 많은 상황
+  return answer;
+}
+
+let a = "(()(()))(()";
+console.log(solution(a));

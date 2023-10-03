@@ -28,3 +28,21 @@
 
 // ▣ 출력예제 1
 // YES
+
+function solution(need, plan) {
+  let answer = "YES";
+  let queue = need.split(""); // 필수 과목을 queue에 넣기
+
+  for (let x of plan) {
+    // 필수 과목이 queue에 있는지 확인
+    if (queue.includes(x)) {
+      if (x !== queue.shift()) return "NO"; // 제일 앞에 있는 과목이 아니라면, 순서대로 들은게 아님
+    }
+  }
+  if (queue.length > 0) return "NO"; // queue 가 비어 있지 않다면, 필수과목 전부 이수한게 아님
+  return answer;
+}
+
+let a = "CBA";
+let b = "CBDAGE";
+console.log(solution(a, b));
