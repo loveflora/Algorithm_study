@@ -26,13 +26,17 @@ function solution(n, k, card) {
   // 3번 뽑음 : 3중 for문
   // 10C3 (조합)
   for (let i = 0; i < n; i++) {
+    // 원래는 n이 아닌, n-2이긴 함 (n보다 적게 돎)
     for (let j = i + 1; j < n; j++) {
+      // n-2
       for (let k = j + 1; k < n; k++) {
         tmp.add(card[i] + card[j] + card[k]);
       }
     }
   }
 
+  // Set은 sort 메소드 지원 안하기 때문에, 유사배열로 변경
+  // Array.from() : iterable이나 유사 배열 객체를 => 진짜 배열로 변환해줄 때 사용 !
   let a = Array.from(tmp).sort((a, b) => b - a);
   answer = a[k - 1];
   return answer;

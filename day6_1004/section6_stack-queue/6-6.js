@@ -31,9 +31,12 @@
 function solution(n, k) {
   let answer;
   // Queue : FIFO
+
   let queue = Array.from({ length: n }, (value, index) => index + 1);
   // Array.from({ length: n }) : 길이가 n인 유사배열
   // (n) [1, 2, 3, 4, 5, ... n]
+
+  // Array.from() : iterable이나 유사 배열 객체를 => 진짜 배열로 변환해줄 때 사용 !
 
   while (queue.length) {
     // 0되면 멈춤
