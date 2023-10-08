@@ -16,28 +16,41 @@
 // ▣ 출력예제 1
 // -3 -2 -6 1 2 3 5 6
 
+// 버블 정렬
 function solution(arr) {
   let answer = arr;
-  for (let i = 0; i < arr.length; i++) {
-    let idx = i;
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[j] < arr[idx]) idx = j;
+  for (let i = 0; i < arr.length - 1; i++) {
+    for (let j = 0; j < arr.length - 1 - i; j++) {
+      if (arr[j] > arr[j + 1]) {
+        [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+      }
     }
-    [arr[i], arr[idx]] = [arr[idx], arr[i]];
   }
   return answer;
 }
 
-function solution(arr) {
-  let answer = [];
-  for (let x of arr) {
-    if (x < 0) answer.push(x);
-  }
-  for (let x of arr) {
-    if (x > 0) answer.push(x);
-  }
-  return answer;
-}
+// function solution(arr) {
+//   let answer = arr;
+//   for (let i = 0; i < arr.length; i++) {
+//     let idx = i;
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[j] < arr[idx]) idx = j;
+//     }
+//     [arr[i], arr[idx]] = [arr[idx], arr[i]];
+//   }
+//   return answer;
+// }
+
+// function solution(arr) {
+//   let answer = [];
+//   for (let x of arr) {
+//     if (x < 0) answer.push(x);
+//   }
+//   for (let x of arr) {
+//     if (x > 0) answer.push(x);
+//   }
+//   return answer;
+// }
 
 let arr = [1, 2, 3, -3, -2, 5, 6, -6];
 console.log(solution(arr));
