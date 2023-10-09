@@ -1,4 +1,6 @@
 //=== 7-5. LRU ===
+//-- 삽입 정렬
+
 // Least Recently Used(카카오 캐시 문제 변형)
 
 // 캐시메모리는 CPU와 주기억장치(DRAM) 사이의 고속의 임시 메모리로서
@@ -29,44 +31,54 @@
 // 마지막 작업 후 캐시메모리의 상태를 가장 최근 사용된 작업부터 차례로 출력합니다.
 
 // ▣ 입력예제 1
-// 59
-// 123262357
+// 5 9
+// 1 2 3 2 6 2 3 5 7
 
 // ▣ 출력예제 1
-// 75326
+// 7 5 3 2 6
+
 // 캐시 메모리 상태 변화
 // 10000 21000 32100 23100 62310 26310 32610 53261
 
-function solution(size, arr) {
-  let answer = Array.from({ length: size }, () => 0);
-  arr.forEach((x) => {
-    let pos = -1;
-    for (let i = 0; i < size; i++) if (x === answer[i]) pos = i;
-    if (pos === -1) {
-      for (let i = size - 1; i >= 1; i--) {
-        answer[i] = answer[i - 1];
-      }
-    } else {
-      for (let i = pos; i >= 1; i--) {
-        answer[i] = answer[i - 1];
-      }
-    }
-    answer[0] = x;
-  });
+// //] 1. 삽입 정렬
+// function solution(size, arr) {
+//   let answer = Array.from({ length: size }, () => 0); // 0으로 초기화
 
-  return answer;
-}
+//   arr.forEach((x) => {
+//     let pos = -1; // index
+//     for (let i = 0; i < size; i++) if (x === answer[i]) pos = i; // 1) 있을 경우
+//     // 2) 배열에 값이 없는, 새로운 값일 경우 (Cache Miss, 새로운 작업)
+//     // (1) 한 칸씩 뒤로 : 맨 뒤 ~ 처음
+//     if (pos === -1) {
+//       for (let i = size - 1; i >= 1; i--) {
+//         answer[i] = answer[i - 1];
+//       }
+//     } else {
+//       // 1) 배열에 값이 있을 경우 (Cache Hit, 최신 작업)
+//       // 한 칸씩 뒤로 : 값이 있는 곳(pos)부터 ~ 처음
+//       for (let i = pos; i >= 1; i--) {
+//         answer[i] = answer[i - 1];
+//       }
+//     }
+//     answer[0] = x;
+//   });
 
+//   return answer;
+// }
+
+//] 2. 배열 메소드 사용하기 : unshift(), pop()
 function solution(size, arr) {
   let answer = [];
   arr.forEach((x) => {
     let pos = -1;
-    for (let i = 0; i < size; i++) if (x === answer[i]) pos = i;
+    for (let i = 0; i < size; i++) if (x === answer[i]) pos = i; // 1) 배열에 값이 있을 경우 (Cache Hit, 최신 작업)
+    // 2) 배열에 값이 없는, 새로운 값일 경우 (Cache Miss, 새로운 작업)
     if (pos === -1) {
-      answer.unshift(x);
-      if (answer.length > size) answer.pop();
+      answer.unshift(x); // 맨 앞에 추가
+      if (answer.length > size) answer.pop(); // 제일 뒤 제거
     } else {
-      answer.splice(pos, 1);
+      // 1) 배열에 값이 있을 경우 (Cache Hit, 최신 작업)
+      answer.splice(pos, 1); // hit난 지점 하나 지우기
       answer.unshift(x);
     }
   });
