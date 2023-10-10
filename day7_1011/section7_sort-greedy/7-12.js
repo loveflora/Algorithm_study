@@ -46,17 +46,21 @@ function solution(c, stable) {
   // 마구간 위치 정렬
   stable.sort((a, b) => a - b);
 
-  let lt = 1; //~ 왜 1...? stable[0]...?
+  let lt = 1; //~ 왜 1...? stable[0]이 아닌지...?
   let rt = stable[stable.length - 1]; // 맨 끝
 
   while (lt <= rt) {
-    let mid = parseInt((lt + rt) / 2); // 우선 중간지점을 찍음 (가장 가까운 두 말의 거리)
-    // 모든 말 사이의 거리는 "가장 가까운 두 말의 거리" 이상
-    // c 마리 이상 되어야
+    let mid = parseInt((lt + rt) / 2); // 우선 중간지점을 찍음
+    // "가장 가까운 두 말의 거리"가 중간값이라 우선 가정
+
+    // 모든 말 사이의 거리는 최소 "가장 가까운 두 말의 거리"
+    // count(stable, 가장 가까운 두 말의 거리) : 말을 몇 마리 배치할 수 있는지
+    // count가 c 마리 이상 되어야 정답 충족(말 전부 배치)
     if (count(stable, mid) >= c) {
       answer = mid;
       lt = mid + 1; // 말 전부 배치하면, 더 좋은 답을 위해 찾음
-      //~ 정확히 이해가 ㅠㅠ
+      // 가장 가까운 두 말의 "최대" 거리를 구하는거니까, "가장 가까운 두 말의 거리"를 새로 설정하기 위해
+      // mid보다 큰 lt 값을 설정 --> 그리고 다시 중간 값을 "가장 가까운 두 말의 거리"라고 가정
     } else rt = mid - 1; // 틀리면, 그보다 큰 범위는 없앰 (말을 전부 배치 못하니까, 거리를 좁힘)
   }
   return answer;

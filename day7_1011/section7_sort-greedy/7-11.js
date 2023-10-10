@@ -32,14 +32,17 @@
 
 function count(songs, capacity) {
   // capacity: 누적되는 용량
-  let cnt = 1,
+  let cnt = 1, // DVD 최소 한 장은 있다고 초기화
     sum = 0;
 
   for (let x of songs) {
+    // capacity: 용량을 mid라고 정하고
+    // 1 2 3 4 5 6 7 8 9 누적하여 합 > 용량보다 커지기 전까지만
     if (sum + x > capacity) {
+      // 누적된 값이 용량보다 크면 --> 더이상 저장할 수 없음
       cnt++;
       sum = x;
-    } else sum += x;
+    } else sum += x; // 누적된 값이 용량보다 작으면 --> 추가로 저장할 수 있음
   }
   return cnt;
 }
