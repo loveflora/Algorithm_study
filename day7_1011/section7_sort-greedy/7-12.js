@@ -46,11 +46,14 @@ function solution(c, stable) {
   // 마구간 위치 정렬
   stable.sort((a, b) => a - b);
 
-  let lt = 1; //~ 왜 1...? stable[0]이 아닌지...?
+  let lt = 1;
   let rt = stable[stable.length - 1]; // 맨 끝
 
   // lt(말 사이의 최소 거리)를 1로 초기화한다. stable[0] 값이 1이 아닌 경우엔 원하는 답을 얻지 못하게 되므로 stable[0]으로 초기화해서는 안된다.
   // rt(말 사이의 최대 거리)를 배열의 마지막 값으로 초기화한다.
+
+  // let rt = stable[stable.length - 1] - stable[0];
+  // 이것도 되긴 하는데, stable[stable.length - 1]로 하는게 보다 효율적인 방법
 
   while (lt <= rt) {
     let mid = parseInt((lt + rt) / 2); // 우선 중간지점을 찍음
