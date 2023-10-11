@@ -49,6 +49,9 @@ function solution(c, stable) {
   let lt = 1; //~ 왜 1...? stable[0]이 아닌지...?
   let rt = stable[stable.length - 1]; // 맨 끝
 
+  // lt(말 사이의 최소 거리)를 1로 초기화한다. stable[0] 값이 1이 아닌 경우엔 원하는 답을 얻지 못하게 되므로 stable[0]으로 초기화해서는 안된다.
+  // rt(말 사이의 최대 거리)를 배열의 마지막 값으로 초기화한다.
+
   while (lt <= rt) {
     let mid = parseInt((lt + rt) / 2); // 우선 중간지점을 찍음
     // "가장 가까운 두 말의 거리"가 중간값이라 우선 가정

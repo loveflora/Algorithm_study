@@ -1,4 +1,8 @@
 //=== 7-9. 결혼식 ===
+
+// https://school.programmers.co.kr/learn/courses/30/lessons/155651
+//-- 프로그래머스 호텔 대실과 유사한 문제
+
 // 현수는 다음 달에 결혼을 합니다.
 // 현수는 결혼식 피로연을 장소를 빌려 3일간 쉬지 않고 하려고 합니다.
 // 피로연에 참석하는 친구들 N명의 참석하는 시간정보를 현수는 친구들에게 미리 요구했습니다.
@@ -32,8 +36,8 @@ function solution(times) {
   let answer = 0;
   let T_line = [];
   for (let x of times) {
-    T_line.push([x[0], "s"]); // [x[0], "s"] : 시간, "도착"
-    T_line.push([x[1], "e"]); // [x[1], "e"] : 시간, "떠남"
+    T_line.push([x[0], 's']); // [x[0], "s"] : 시간, "도착"
+    T_line.push([x[1], 'e']); // [x[1], "e"] : 시간, "떠남"
   }
 
   T_line.sort((a, b) => {
@@ -51,7 +55,7 @@ function solution(times) {
   let cnt = 0;
   for (let x of T_line) {
     // s(도착)하면, +1
-    if (x[1] === "s") cnt++;
+    if (x[1] === 's') cnt++;
     // e(떠남)하면, -1
     else cnt--;
 
