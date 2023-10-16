@@ -15,10 +15,14 @@
 
 function solution(n) {
   function DFS(L) {
-    if (L == 0) return;
+    if (L == 0) return; // DFS(1) 까지만 실행
+    // else {
+    //   console.log(L);  // 3 2 1
+    //   DFS(L - 1);
+    // }
     else {
       DFS(L - 1);
-      console.log(L);
+      console.log(L); // 1 2 3
     }
   }
   DFS(n);
