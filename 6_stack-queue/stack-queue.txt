@@ -1,0 +1,19 @@
+===== SECTION 6 =====
+    Stack & Queue
+=====================
+
+1. Stack (LIFO)
+세로
+
+push : 제일 뒤에 add
+pop : 제일 뒤에서 remove
+
+
+2. Queue (FIFO)
+가로
+
+push : 제일 뒤에 add
+shift : 제일 앞에서 remove
+
+
+unshift : 제일 앞에서 add

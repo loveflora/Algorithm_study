@@ -49,8 +49,8 @@ function solution(board, moves) {
         if (tmp === stack[stack.length - 1]) {
           // 같은 모양의 인형 두 개가 바구니에 연속해서 쌓이게 되면,
 
-          stack.pop(); // 두 인형은 터뜨려지면서
-          answer += 2; // 바구니에서 사라지게 됩니다.
+          stack.pop(); // 두 인형은 터뜨려지면서 바구니에서 사라지게 됩니다.
+          answer += 2; // 터진 인형의 개수
         } else stack.push(tmp); // 2) stack 넣는 숫자가 같지 않다면, stack에 넣기
         break; //: for문 멈추기 (같은 라인의 인형 하나만 꺼내기 위해)
         // 멈춘 위치에서 "가장 위에 있는 인형"을 집어 올릴 수 있습니다.
